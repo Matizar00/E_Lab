@@ -11,7 +11,7 @@
 <body>
     <div class="base-container">
         <nav>
-            <img src="public/img/logo.png">
+            <img src="public/img/logo.svg">
             <ul>
                 <li>
                     <i class="fas fa-project-diagram"></i>
@@ -42,18 +42,24 @@
                     <i class="fas fa-plus"></i> add project
                 </div>
             </header>
-            <section class="projects">
-                <div id="project-1">
-                    <img src="public/uploads/<?= $project->getImage() ?>">
-                    <div>
-                        <h2><?= $project->getTitle() ?></h2>
-                        <p><?= $project->getDescription() ?></p>
-                        <div class="social-section">
-                            <i class="fas fa-heart"> 600</i>
-                            <i class="fas fa-minus-square"> 121</i>
-                        </div>
+            <section class="project-form">
+                <h1>UPLOAD</h1>
+                <form action="addProject" method="POST" ENCTYPE="multipart/form-data">
+                    <div class="messages">
+                        <?php
+                            if(isset($messages)){
+                                foreach($messages as $message) {
+                                    echo $message;
+                                }
+                            }
+                        ?>
                     </div>
-                </div>
+                    <input name="title" type="text" placeholder="title">
+                    <textarea name="description" rows=5 placeholder="description"></textarea>
+
+                    <input type="file" name="file"/><br/>
+                    <button type="submit">send</button>
+                </form>
             </section>
         </main>
     </div>
