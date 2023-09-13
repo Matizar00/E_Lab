@@ -19,6 +19,12 @@ class ProjectController extends AppController {
         $this->entryRepository = new EntryRepository();
     }
 
+    public function projects()
+    {
+        $projects = $this->entryRepository->getProjects();
+        $this->render('projects', ['projects' => $projects]);
+    }
+
     public function addProject()
     {   
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -31,9 +37,28 @@ class ProjectController extends AppController {
             $project = new Project($_POST['title'], $_POST['description'], $_FILES['file']['name']);
             $this->entryRepository->addProject($project);
 
-            return $this->render('projects', ['messages' => $this->message, 'project' => $project]);
+            return $this->render('projects', [
+                'projects'=> $this->entryRepository->getProjects(),
+                'messages' => $this->message
+            ]);
         }
         return $this->render('add-project', ['messages' => $this->message]);
+    }
+
+
+    public function search()
+    {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->projectRepository->getProjectByTitle($decoded['search']));
+        }
     }
 
     private function validate(array $file): bool

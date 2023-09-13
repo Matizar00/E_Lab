@@ -1,33 +1,31 @@
 section {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	grid-gap: 2em;
 	padding: 2em;
 	overflow: auto;
 }
 
 .projects > div > img {
-	height: 50%;
-	width: 100%;
+	height: 100%; /* Ustawiamy wysokość na 100%, aby obrazek wypełnił całą wysokość kontenera */
+	width: 30%; /* Automatyczna szerokość, aby zachować proporcje obrazka */
 	object-fit: cover;
-	border-radius: 1em 1em 0 0;
+	border-radius: 1em 0 0 1em; /* Zaokrąglenie rogów tylko po lewej stronie */
 }
 
 .projects > div > div {
-	height: 50%;
-	margin: 1em;
-	color: #2699fb;
+	flex: 1; /* Rozciągnięcie do maksymalnej dostępnej szerokości */
+	padding: 1em;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 }
-
 .projects > div {
 	border: 1px solid gray;
-	border-radius: 1em 1em 0 0;
+	border-radius: 1em;
 	height: 400px;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row; /* Ustawiamy na "row" aby elementy były ułożone w rzędzie */
 	justify-content: space-between;
 }
 

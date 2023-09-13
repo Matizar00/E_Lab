@@ -45,4 +45,35 @@ class EntryRepository extends Repository
             $project->getImage()
         ]);
     }
+
+    public function getProjects(): array {
+        $result = [];
+    
+        $stmt = $this->database->connect()->prepare('SELECT * FROM entries');
+        $stmt->execute();
+        $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        foreach ($projects as $project) {
+            $result[] = new Project(
+                $project['title'],
+                $project['content'],
+                $project['image']
+            );
+        }
+    
+        return $result;
+    }
+
+    public function getProjectByTitle(string $searchString)
+    {
+        $searchString = '%' . strtolower($searchString) . '%';
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM entries WHERE LOWER(title) LIKE :search OR LOWER(content) LIKE :search
+        ');
+        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
