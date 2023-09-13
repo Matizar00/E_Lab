@@ -1,4 +1,4 @@
-# Lostfriends
+# EnglishLab
 
 Simple web application written in PHP.
 
