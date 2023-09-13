@@ -31,3 +31,4 @@ EnglishLab is a web-based application designed to share your trips around the wo
 
 The EnglishLab app utilizes a localhost PostgreSQL database.
 
+![ERD](https://github.com/Matizar00/E_Lab/blob/main/English_Lab.drawio.png)
