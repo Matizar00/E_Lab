@@ -12,32 +12,32 @@ class Project {
         $this->image = $image;
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function setTitle($title)
+    public function setTitle(string $title)
     {
         $this->title = $title;
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getImage()
+    public function getImage():string
     {
         return $this->image;
     }
 
-    public function setImage($image)
+    public function setImage($image):string
     {
         $this->image = $image;
     }

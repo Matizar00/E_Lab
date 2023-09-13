@@ -4,14 +4,14 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/projects.css">
 
-    <script src="https://kit.fontawesome.com/723297a893.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/02ddf7bdad.js" crossorigin="anonymous"></script>
     <title>PROJECTS</title>
 </head>
 
 <body>
     <div class="base-container">
         <nav>
-            <img src="public/img/logo.svg">
+            <img src="public/img/logo.png">
             <ul>
                 <li>
                     <i class="fas fa-project-diagram"></i>

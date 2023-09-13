@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__ .'/../models/Project.php';
+require_once __DIR__.'/../repository/EntryRepository.php';
 
 class ProjectController extends AppController {
 
@@ -10,17 +11,25 @@ class ProjectController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $message = [];
+    private $entryRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->entryRepository = new EntryRepository();
+    }
 
     public function addProject()
     {   
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+
             move_uploaded_file(
                 $_FILES['file']['tmp_name'], 
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            // TODO create new project object and save it in database
             $project = new Project($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $this->entryRepository->addProject($project);
 
             return $this->render('projects', ['messages' => $this->message, 'project' => $project]);
         }
