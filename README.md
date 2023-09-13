@@ -4,7 +4,7 @@ Simple web application written in PHP.
 
 ## Overview
 
-EnglishLab is a web-based application designed to share your trips around the world with other.
+EnglishLab is a web-based application designed to share your trips around the world with others.
 
 ## Technologies
 
