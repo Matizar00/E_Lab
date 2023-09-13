@@ -33,4 +33,5 @@ The EnglishLab app utilizes a localhost PostgreSQL database.
 
 Entity Relationship Diagram [ERD]
 
-![ERD](https://github.com/0WhoAmI/wdpai/assets/94999592/426c6ad9-ca26-41bf-b574-6164fe9adf56)
+![ERD](https://github.com/Matizar00/E_Lab/blob/main/English_Lab.drawio.png)
+
